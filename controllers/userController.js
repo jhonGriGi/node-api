@@ -26,6 +26,9 @@ const getUser = async (req, res) => {
 const createUser = async (req, res) => {
   const { name, email, password } = req.body;
   try {
+    if (name == undefined || email == undefined || password == undefined) {
+      throw new Error("The arguments must not be null");
+    }
     const createUser = await userService.createUser(name, email, password);
     res.status(200).send({ status: "OK", data: createUser });
   } catch (err) {

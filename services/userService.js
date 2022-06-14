@@ -20,9 +20,6 @@ const getUser = async (id) => {
 
 const createUser = async (name, email, password) => {
   try {
-    if (name == undefined || email == undefined || password == undefined) {
-      throw new Error("The arguments must not be null");
-    }
     let newUser = await db.User.create({
       name,
       email,
